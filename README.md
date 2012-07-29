@@ -2,6 +2,7 @@ Getting Started With SiddharthCartBundle
 ========================================
 
 ## Prerequisites
+First thing before using SiddharthCartBundle you have to create your own ProductBundle.
 
 This version of the bundle requires Symfony 2.1.
 
