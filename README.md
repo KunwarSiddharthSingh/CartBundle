@@ -101,8 +101,8 @@ class CartController extends Controller
 				
 				$qtyAvailable = $product->getQuantity();
 				
-				if( $qtyAvailable >= $cart[$id]['quantity'] + 1 ) {
-					$cart[$id]['quantity'] = $cart[$id]['quantity'] + 1; 
+				if( $qtyAvailable >= $cart[$id] + 1 ) {
+					$cart[$id] = $cart[$id] + 1; 
 				} else {
 					$this->get('session')->setFlash('notice', 'Quantity exceeds the available stock');			
 					return $this->redirect($this->generateUrl('cart'));
@@ -110,7 +110,7 @@ class CartController extends Controller
 			} else {
 				$cart = $session->get('cart', array());
 				$cart[$id] = $id;
-				$cart[$id]['quantity'] = 1;
+				$cart[$id] = 1;
 			}
 			
 			$session->set('cart', $cart);
@@ -131,7 +131,7 @@ class CartController extends Controller
 		if(!$cart) { $this->redirect( $this->generateUrl('cart') ); }
 		
 		if( isset($cart[$id]) ) {
-			$cart[$id]['quantity'] = '0';
+			$cart[$id] = '0';
 			unset($cart[$id]);
 		} else {
 			$this->get('session')->setFlash('notice', 'Go to hell');	
